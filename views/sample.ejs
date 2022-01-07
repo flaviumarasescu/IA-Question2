@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1></h1>
+    <script>
+      const colors = [
+        "#00ffbf",
+        "#ff3f8a",
+        "#00ff75",
+        "#ff6fcc",
+        "#d4ed8b",
+        "#0063c5",
+        "#e4d064",
+        "#0087ec",
+        "#610000",
+        "#00c4ff",
+      ];
+      const socket = io("http://localhost:3000");
+      socket.on("connection");
+      socket.on("timer_data", (timer) => {
+        document.querySelector("h1").innerHTML = timer;
+        if (timer % 5 === 0) {
+          document.getElementsByTagName("BODY")[0].style.backgroundColor =
+            colors[timer % 10];
+        }
+      });
+    </script>
+  </body>
+</html>
